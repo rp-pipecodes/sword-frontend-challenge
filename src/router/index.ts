@@ -1,9 +1,18 @@
 import { useAuthStore } from "./../stores/auth";
-import { createRouter, createWebHistory } from "vue-router";
+import {
+  createRouter,
+  createWebHistory,
+  type NavigationGuardNext,
+  type RouteLocationNormalized,
+} from "vue-router";
 import LoginView from "../views/LoginView.vue";
 import DiscoveryView from "../views/DiscoveryView.vue";
 
-const requireAuth = (to, from, next) => {
+const requireAuth = (
+  to: RouteLocationNormalized,
+  from: RouteLocationNormalized,
+  next: NavigationGuardNext
+) => {
   const authStore = useAuthStore();
   if (!authStore.user) {
     next({ name: "login" });
