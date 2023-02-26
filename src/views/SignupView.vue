@@ -50,54 +50,58 @@ function handleSignUp() {
       router.replace({ name: "discovery" });
     })
     .catch((error) => {
-      alert(error);
+      errorMessage.value = error;
     });
 }
 </script>
 
 <template>
-  <main>
-    <h1 class="uk-heading-small">Sign Up</h1>
+  <main class="center">
+    <div class="auth">
+      <h1 class="uk-heading-small">Sign Up</h1>
 
-    <label v-show="errorMessage" class="uk-label-danger">{{
-      errorMessage
-    }}</label>
+      <label v-show="errorMessage" class="uk-label-danger">{{
+        errorMessage
+      }}</label>
 
-    <InputField
-      type="email"
-      name="email"
-      placeholder="Username"
-      label-text="Username"
-      v-model="email"
-    />
+      <InputField
+        type="email"
+        name="email"
+        placeholder="Email"
+        label-text="Email"
+        v-model="email"
+      />
 
-    <InputField
-      type="password"
-      name="password"
-      placeholder="******"
-      label-text="Password"
-      classes="uk-margin-small-top"
-      v-model="password"
-    />
+      <InputField
+        type="password"
+        name="password"
+        placeholder="******"
+        label-text="Password"
+        classes="uk-margin-small-top"
+        v-model="password"
+      />
 
-    <InputField
-      type="password"
-      name="confirm-password"
-      placeholder="******"
-      label-text="Confirm Password"
-      classes="uk-margin-small-top"
-      v-model="confirmPassword"
-    />
+      <InputField
+        type="password"
+        name="confirm-password"
+        placeholder="******"
+        label-text="Confirm Password"
+        classes="uk-margin-small-top"
+        v-model="confirmPassword"
+      />
 
-    <PrimaryButton
-      text="Sign Up"
-      classes="uk-width-1-1 uk-margin-medium-top"
-      @click="handleSignUp"
-    />
+      <PrimaryButton
+        text="Sign Up"
+        classes="uk-width-1-1 uk-margin-medium-top"
+        @click="handleSignUp"
+      />
 
-    <div class="uk-margin-small-top">
-      Already have an account?
-      <RouterLink to="/login" class="uk-link">Click here to Log In</RouterLink>
+      <div class="uk-margin-small-top">
+        Already have an account?
+        <RouterLink to="/login" class="uk-link"
+          >Click here to Log In</RouterLink
+        >
+      </div>
     </div>
   </main>
 </template>
