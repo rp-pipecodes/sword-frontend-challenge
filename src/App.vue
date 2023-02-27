@@ -7,7 +7,7 @@ const authStore = useAuthStore();
 </script>
 
 <template>
-  <header v-show="authStore.loggedIn">
+  <header v-show="authStore.user">
     <NavBar />
   </header>
 

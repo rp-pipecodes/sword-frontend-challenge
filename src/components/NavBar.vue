@@ -29,7 +29,7 @@ function handleLogout() {
         <div uk-navbar>
           <div class="uk-navbar-left">
             <a class="uk-navbar-item uk-logo" href="#" aria-label="Back to Home"
-              >Logo</a
+              >LOGO</a
             >
 
             <ul class="uk-navbar-nav">

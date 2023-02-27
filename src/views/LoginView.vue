@@ -4,7 +4,7 @@ import InputField from "@/components/InputField.vue";
 import { useAuthStore } from "@/stores/auth";
 import router from "@/router";
 import { ref, type Ref } from "vue";
-import { EMAIL_REGEX } from "@/constants";
+import { EMAIL_REGEX } from "@/constants/validations";
 
 const authStore = useAuthStore();
 
@@ -77,7 +77,7 @@ function handleLogin() {
 
       <PrimaryButton
         text="Sign In"
-        classes="uk-width-1-1 uk-margin-medium-top"
+        class="uk-width-1-1 uk-margin-medium-top"
         @click="handleLogin"
       />
 

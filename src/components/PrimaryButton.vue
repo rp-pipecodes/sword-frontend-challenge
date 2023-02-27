@@ -1,12 +1,11 @@
 <script setup lang="ts">
 defineProps<{
   text: string;
-  classes?: string;
 }>();
 </script>
 
 <template>
-  <button class="uk-button uk-button-primary" :class="classes">
+  <button class="uk-button uk-button-primary">
     {{ text }}
   </button>
 </template>

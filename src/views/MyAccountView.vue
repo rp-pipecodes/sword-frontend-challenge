@@ -3,7 +3,7 @@ import PrimaryButton from "@/components/PrimaryButton.vue";
 import InputField from "@/components/InputField.vue";
 import { useAuthStore } from "@/stores/auth";
 import { ref, type Ref } from "vue";
-import { EMAIL_REGEX } from "@/constants";
+import { EMAIL_REGEX } from "@/constants/validations";
 
 const authStore = useAuthStore();
 
@@ -81,7 +81,7 @@ function handleUpdate() {
 
       <PrimaryButton
         text="Save"
-        classes="uk-width-1-1 uk-margin-medium-top"
+        class="uk-width-1-1 uk-margin-medium-top"
         @click="handleUpdate"
       />
     </div>
