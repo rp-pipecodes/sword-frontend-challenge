@@ -50,39 +50,41 @@ function handleUpdate() {
 </script>
 
 <template>
-  <main class="my-account">
-    <h1 class="uk-heading-small">My Account</h1>
+  <main>
+    <div class="my-account">
+      <h1 class="uk-heading-small">My Account</h1>
 
-    <label v-show="errorMessage" class="uk-label-danger">{{
-      errorMessage
-    }}</label>
+      <label v-show="errorMessage" class="uk-label-danger">{{
+        errorMessage
+      }}</label>
 
-    <label v-show="successMessage" class="uk-label-success">{{
-      successMessage
-    }}</label>
+      <label v-show="successMessage" class="uk-label-success">{{
+        successMessage
+      }}</label>
 
-    <InputField
-      type="test"
-      name="username"
-      placeholder="Username"
-      label-text="Username*"
-      v-model="username"
-    />
+      <InputField
+        type="test"
+        name="username"
+        placeholder="Username"
+        label-text="Username*"
+        v-model="username"
+      />
 
-    <InputField
-      type="email"
-      name="email"
-      placeholder="Email"
-      label-text="Email*"
-      classes="uk-margin-small-top"
-      v-model="email"
-    />
+      <InputField
+        type="email"
+        name="email"
+        placeholder="Email"
+        label-text="Email*"
+        classes="uk-margin-small-top"
+        v-model="email"
+      />
 
-    <PrimaryButton
-      text="Save"
-      classes="uk-width-1-1 uk-margin-medium-top"
-      @click="handleUpdate"
-    />
+      <PrimaryButton
+        text="Save"
+        classes="uk-width-1-1 uk-margin-medium-top"
+        @click="handleUpdate"
+      />
+    </div>
   </main>
 </template>
 
@@ -91,6 +93,5 @@ function handleUpdate() {
   display: flex;
   flex-direction: column;
   max-width: 330px;
-  padding: 30px;
 }
 </style>
