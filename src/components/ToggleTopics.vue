@@ -1,15 +1,11 @@
 <script setup lang="ts">
 import { useDiscoveryStore } from "@/stores/discovery";
-import { computed, onMounted } from "vue";
+import { computed } from "vue";
 import TopicButton from "./TopicButton.vue";
 
 const discoveryStore = useDiscoveryStore();
 
 const topics = computed(() => discoveryStore.topics);
-
-onMounted(() => {
-  discoveryStore.getTopics();
-});
 </script>
 
 <template>

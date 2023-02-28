@@ -2,6 +2,7 @@
 import { computed } from "vue";
 import RepositoryCard from "./RepositoryCard.vue";
 import type { Topic } from "@/models/topic";
+import TopicTitle from "./TopicTitle.vue";
 
 const props = defineProps<{
   topic: Topic;
@@ -15,6 +16,7 @@ const topic = computed(() => props.topic);
     v-show="topic.repositories && topic.repositories?.length > 0"
     class="repository-listing"
   >
+    <TopicTitle :topic="topic" />
     <div class="repositories-list uk-margin-small-top">
       <RepositoryCard
         class="repository-item"

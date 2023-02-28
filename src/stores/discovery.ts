@@ -5,6 +5,8 @@ import { TOPICS_DEFAULT } from "@/constants/topics";
 import type { Repository } from "@/models/repository";
 import type { Topic } from "@/models/topic";
 
+const REPOSITORIES_PER_PAGE = "10";
+
 export const useDiscoveryStore = defineStore("discovery", () => {
   const bookmarks: Ref<Repository[]> = ref([]);
   const topics: Ref<Topic[]> = ref(TOPICS_DEFAULT);
@@ -12,7 +14,7 @@ export const useDiscoveryStore = defineStore("discovery", () => {
 
   const authStore = useAuthStore();
 
-  async function getBookmarks() {
+  function getBookmarks() {
     const user = authStore.user;
 
     fetch(
@@ -29,24 +31,35 @@ export const useDiscoveryStore = defineStore("discovery", () => {
   async function getTopics() {
     const user = authStore.user;
 
-    fetch(
+    const response = await fetch(
       `${import.meta.env.VITE_FIREBASE_DATABASE_URL}/${user?.uid}/topics.json`
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        if (data) {
-          topicsId.value = Object.keys(data)[0] as string;
-          topics.value = Object.values(data)[0] as Topic[];
+    );
+
+    const data = await response.json();
+
+    if (data) {
+      topicsId.value = Object.keys(data)[0] as string;
+
+      const tempTopics = Object.values(data)[0] as Topic[];
+
+      for (const topic of tempTopics) {
+        if (topic.selected) {
+          const repos = await getRepositories(topic);
+          topic.repositories = repos;
         }
-      });
+      }
+
+      topics.value = tempTopics;
+    }
   }
 
   async function updateTopic(topic: Topic) {
-    // clear repositories before update the database because we don't need to store them in the database
-    const newTopic: Topic = {
-      ...topic,
-      repositories: undefined,
-    };
+    const newTopic = Object.assign({}, topic);
+
+    if (topic.selected) {
+      const repos = await getRepositories(topic);
+      newTopic.repositories = repos;
+    }
 
     const updatedTopics: Topic[] = topics.value.map((temp) => {
       if (temp.key === newTopic.key) {
@@ -64,18 +77,26 @@ export const useDiscoveryStore = defineStore("discovery", () => {
       await fetch(
         `${import.meta.env.VITE_FIREBASE_DATABASE_URL}/${user?.uid}/topics/${
           topicsId.value
-        }/.json`,
+        }.json`,
         {
           method: "DELETE",
         }
       );
     }
 
+    // clear repositories before update the database because we don't need to store them in the database
+    const topicsWithoutRepositories: Topic[] = updatedTopics.map((temp) => {
+      return {
+        ...temp,
+        repositories: undefined,
+      };
+    });
+
     fetch(
       `${import.meta.env.VITE_FIREBASE_DATABASE_URL}/${user?.uid}/topics.json`,
       {
         method: "POST",
-        body: JSON.stringify(updatedTopics),
+        body: JSON.stringify(topicsWithoutRepositories),
       }
     )
       .then((response) => response.json())
@@ -84,12 +105,27 @@ export const useDiscoveryStore = defineStore("discovery", () => {
 
         topics.value = updatedTopics;
       });
-
-    // TODO: add/remove/update the listing
   }
 
-  async function getRepositories(topic: Topic) {
-    // TODO: fetch topic repositories
+  function getRepositories(topic: Topic): Promise<Repository[]> {
+    return new Promise((resolve, reject) => {
+      const paramsString = `q=${topic.key}&sort=${topic.sort}&per_page=${REPOSITORIES_PER_PAGE}&page=1`;
+
+      fetch(`https://api.github.com/search/repositories?${paramsString}`)
+        .then((response) => response.json())
+        .then((data) => {
+          const repositories: Repository[] =
+            data?.items?.map((item: any) => {
+              return {
+                id: item.id,
+                url: item.html_url,
+                fullName: item.full_name,
+              };
+            }) || null;
+          return resolve(repositories);
+        })
+        .catch((error) => reject(error));
+    });
   }
 
   async function removeBookmark(repository: Repository) {
