@@ -125,7 +125,11 @@ export const useDiscoveryStore = defineStore("discovery", () => {
     return new Promise((resolve, reject) => {
       const paramsString = `q=${topic.key}&sort=${topic.sort}&per_page=${REPOSITORIES_PER_PAGE}&page=1`;
 
-      fetch(`https://api.github.com/search/repositories?${paramsString}`)
+      fetch(`https://api.github.com/search/repositories?${paramsString}`, {
+        headers: {
+          Authorization: `Bearer ${import.meta.env.VITE_GITHUB_TOKEN}`,
+        },
+      })
         .then((response) => response.json())
         .then((data) => {
           const repositories: Repository[] =
