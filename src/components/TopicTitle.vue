@@ -1,8 +1,10 @@
 <script setup lang="ts">
+import { TOAST_OPTIONS } from "@/constants/toasts";
 import { SORT_OPTIONS } from "@/constants/topics";
 import type { Topic } from "@/models/topic";
 import { useDiscoveryStore } from "@/stores/discovery";
 import { computed } from "vue";
+import { useToast } from "vue-toast-notification";
 
 const props = defineProps<{
   topic: Topic;
@@ -12,13 +14,17 @@ const topic = computed(() => props.topic);
 
 const discoveryStore = useDiscoveryStore();
 
+const $toast = useToast();
+
 function handleUpdateTopicSort(sort: string) {
   const newTopic: Topic = {
     ...topic.value,
     sort: sort,
   };
 
-  discoveryStore.updateTopic(newTopic);
+  discoveryStore.updateTopic(newTopic).catch((error) => {
+    $toast.error(error, TOAST_OPTIONS);
+  });
 }
 </script>
 

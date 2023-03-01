@@ -14,16 +14,19 @@ export const useDiscoveryStore = defineStore("discovery", () => {
 
   const authStore = useAuthStore();
 
-  function getBookmarks() {
-    const user = authStore.user;
+  async function getBookmarks() {
+    try {
+      const user = authStore.user;
 
-    fetch(
-      `${import.meta.env.VITE_FIREBASE_DATABASE_URL}/${
-        user?.uid
-      }/bookmarks.json`
-    )
-      .then((response) => response.json())
-      .then((data) => {
+      const response = await fetch(
+        `${import.meta.env.VITE_FIREBASE_DATABASE_URL}/${
+          user?.uid
+        }/bookmarks.json`
+      );
+
+      if (response.status === 200) {
+        const data = await response.json();
+
         if (data) {
           const keys = Object.keys(data);
           const temp: Repository[] = [];
@@ -39,31 +42,50 @@ export const useDiscoveryStore = defineStore("discovery", () => {
         } else {
           bookmarks.value = [];
         }
-      });
+
+        return Promise.resolve(bookmarks.value);
+      } else {
+        return Promise.reject("Can not fetch bookmarks");
+      }
+    } catch (error) {
+      return Promise.reject(error);
+    }
   }
 
   async function getTopics() {
-    const user = authStore.user;
+    try {
+      const user = authStore.user;
 
-    const response = await fetch(
-      `${import.meta.env.VITE_FIREBASE_DATABASE_URL}/${user?.uid}/topics.json`
-    );
+      const response = await fetch(
+        `${import.meta.env.VITE_FIREBASE_DATABASE_URL}/${user?.uid}/topics.json`
+      );
 
-    const data = await response.json();
+      if (response.status === 200) {
+        const data = await response.json();
 
-    if (data) {
-      topicsId.value = Object.keys(data)[0] as string;
+        if (data) {
+          topicsId.value = Object.keys(data)[0] as string;
 
-      const tempTopics = Object.values(data)[0] as Topic[];
+          const tempTopics = Object.values(data)[0] as Topic[];
 
-      for (const topic of tempTopics) {
-        if (topic.selected) {
-          const repos = await getRepositories(topic);
-          topic.repositories = repos;
+          for (const topic of tempTopics) {
+            if (topic.selected) {
+              const repos = await getRepositories(topic);
+              topic.repositories = repos;
+            }
+          }
+
+          topics.value = tempTopics;
+        } else {
+          topics.value = [];
         }
-      }
 
-      topics.value = tempTopics;
+        return Promise.resolve(topics.value);
+      } else {
+        return Promise.reject("Can not fetch topics");
+      }
+    } catch (error) {
+      return Promise.reject(error);
     }
   }
 
@@ -71,8 +93,12 @@ export const useDiscoveryStore = defineStore("discovery", () => {
     const newTopic = Object.assign({}, topic);
 
     if (topic.selected) {
-      const repos = await getRepositories(topic);
-      newTopic.repositories = repos;
+      try {
+        const repos = await getRepositories(topic);
+        newTopic.repositories = repos;
+      } catch (error) {
+        return Promise.reject(error);
+      }
     }
 
     const updatedTopics: Topic[] = topics.value.map((temp) => {
@@ -87,15 +113,19 @@ export const useDiscoveryStore = defineStore("discovery", () => {
 
     if (topicsId.value) {
       // remove the old ones if exist to recreate the array with the new data
-      // I tried to update the entire object without recreating it but without success
-      await fetch(
-        `${import.meta.env.VITE_FIREBASE_DATABASE_URL}/${user?.uid}/topics/${
-          topicsId.value
-        }.json`,
-        {
-          method: "DELETE",
-        }
-      );
+      // FIXME: I tried to update the entire object without recreating it but without success
+      try {
+        await fetch(
+          `${import.meta.env.VITE_FIREBASE_DATABASE_URL}/${user?.uid}/topics/${
+            topicsId.value
+          }.json`,
+          {
+            method: "DELETE",
+          }
+        );
+      } catch (error) {
+        return Promise.reject(error);
+      }
     }
 
     // clear repositories before update the database because we don't need to store them in the database
@@ -106,19 +136,31 @@ export const useDiscoveryStore = defineStore("discovery", () => {
       };
     });
 
-    fetch(
-      `${import.meta.env.VITE_FIREBASE_DATABASE_URL}/${user?.uid}/topics.json`,
-      {
-        method: "POST",
-        body: JSON.stringify(topicsWithoutRepositories),
-      }
-    )
-      .then((response) => response.json())
-      .then((data) => {
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_FIREBASE_DATABASE_URL}/${
+          user?.uid
+        }/topics.json`,
+        {
+          method: "POST",
+          body: JSON.stringify(topicsWithoutRepositories),
+        }
+      );
+
+      if (response.status === 200) {
+        const data = await response.json();
+
         topicsId.value = data.name;
 
         topics.value = updatedTopics;
-      });
+
+        return Promise.resolve(topics.value);
+      } else {
+        return Promise.reject("Can not update topic");
+      }
+    } catch (error) {
+      return Promise.reject(error);
+    }
   }
 
   function getRepositories(topic: Topic): Promise<Repository[]> {
@@ -130,7 +172,13 @@ export const useDiscoveryStore = defineStore("discovery", () => {
           Authorization: `Bearer ${import.meta.env.VITE_GITHUB_TOKEN}`,
         },
       })
-        .then((response) => response.json())
+        .then((response) => {
+          if (response.status === 200) {
+            return response.json();
+          }
+
+          return reject("Can not fetch repositories from Github");
+        })
         .then((data) => {
           const repositories: Repository[] =
             data?.items?.map((item: any) => {
@@ -147,38 +195,54 @@ export const useDiscoveryStore = defineStore("discovery", () => {
   }
 
   async function removeBookmark(repository: Repository) {
-    const user = authStore.user;
+    try {
+      const user = authStore.user;
 
-    fetch(
-      `${import.meta.env.VITE_FIREBASE_DATABASE_URL}/${user?.uid}/bookmarks/${
-        repository.id
-      }.json`,
-      {
-        method: "DELETE",
+      const response = await fetch(
+        `${import.meta.env.VITE_FIREBASE_DATABASE_URL}/${user?.uid}/bookmarks/${
+          repository.id
+        }.json`,
+        {
+          method: "DELETE",
+        }
+      );
+
+      if (response.status === 200) {
+        await getBookmarks();
+
+        return Promise.resolve();
+      } else {
+        return Promise.reject("Can not remove the bookmark");
       }
-    )
-      .then((response) => response.json())
-      .then(() => {
-        getBookmarks();
-      });
+    } catch (error) {
+      return Promise.reject(error);
+    }
   }
 
   async function addBookmark(repository: Repository) {
-    const user = authStore.user;
+    try {
+      const user = authStore.user;
 
-    fetch(
-      `${import.meta.env.VITE_FIREBASE_DATABASE_URL}/${
-        user?.uid
-      }/bookmarks.json`,
-      {
-        method: "POST",
-        body: JSON.stringify(repository),
+      const response = await fetch(
+        `${import.meta.env.VITE_FIREBASE_DATABASE_URL}/${
+          user?.uid
+        }/bookmarks.json`,
+        {
+          method: "POST",
+          body: JSON.stringify(repository),
+        }
+      );
+
+      if (response.status === 200) {
+        await getBookmarks();
+
+        return Promise.resolve();
+      } else {
+        return Promise.reject("Can not add the bookmark");
       }
-    )
-      .then((response) => response.json())
-      .then(() => {
-        getBookmarks();
-      });
+    } catch (error) {
+      return Promise.reject(error);
+    }
   }
 
   return {

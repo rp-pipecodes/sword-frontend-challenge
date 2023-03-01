@@ -2,13 +2,19 @@
 import { useDiscoveryStore } from "@/stores/discovery";
 import { computed, onMounted } from "vue";
 import RepositoryBookmark from "./RepositoryBookmark.vue";
+import { TOAST_OPTIONS } from "@/constants/toasts";
+import { useToast } from "vue-toast-notification";
 
 const discoveryStore = useDiscoveryStore();
+
+const $toast = useToast();
 
 const bookmarks = computed(() => discoveryStore.bookmarks);
 
 onMounted(() => {
-  discoveryStore.getBookmarks();
+  discoveryStore.getBookmarks().catch((error) => {
+    $toast.error(error, TOAST_OPTIONS);
+  });
 });
 </script>
 

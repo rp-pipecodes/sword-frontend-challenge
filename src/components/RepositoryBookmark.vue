@@ -1,13 +1,17 @@
 <script setup lang="ts">
+import { TOAST_OPTIONS } from "@/constants/toasts";
 import type { Repository } from "@/models/repository";
 import { useDiscoveryStore } from "@/stores/discovery";
 import { computed } from "vue";
+import { useToast } from "vue-toast-notification";
 
 const props = defineProps<{
   repository: Repository;
 }>();
 
 const repository = computed(() => props.repository);
+
+const $toast = useToast();
 
 const imageUrl = computed(
   () => `https://opengraph.githubassets.com/123abc/${repository.value.fullName}`
@@ -20,7 +24,9 @@ function handleClick() {
 }
 
 function handleRemoveBookmark() {
-  discoveryStore.removeBookmark(repository.value);
+  discoveryStore.removeBookmark(repository.value).catch((error) => {
+    $toast.error(error, TOAST_OPTIONS);
+  });
 }
 </script>
 

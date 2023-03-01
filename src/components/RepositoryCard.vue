@@ -2,12 +2,16 @@
 import type { Repository } from "@/models/repository";
 import { useDiscoveryStore } from "@/stores/discovery";
 import { computed } from "vue";
+import { useToast } from "vue-toast-notification";
+import { TOAST_OPTIONS } from "@/constants/toasts";
 
 const props = defineProps<{
   repository: Repository;
 }>();
 
 const discoveryStore = useDiscoveryStore();
+
+const $toast = useToast();
 
 const repository = computed(() => props.repository);
 
@@ -27,9 +31,13 @@ function handleClick() {
 
 function handleToggleBookmark() {
   if (bookmark.value) {
-    discoveryStore.removeBookmark(bookmark.value);
+    discoveryStore.removeBookmark(bookmark.value).catch((error) => {
+      $toast.error(error, TOAST_OPTIONS);
+    });
   } else {
-    discoveryStore.addBookmark(repository.value);
+    discoveryStore.addBookmark(repository.value).catch((error) => {
+      $toast.error(error, TOAST_OPTIONS);
+    });
   }
 }
 </script>
