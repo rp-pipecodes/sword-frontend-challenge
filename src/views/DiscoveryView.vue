@@ -16,7 +16,7 @@ onMounted(() => {
 
 <template>
   <main class="discovery">
-    <MyBookmarks />
+    <MyBookmarks class="uk-margin-medium-bottom" />
 
     <ToggleTopics />
 

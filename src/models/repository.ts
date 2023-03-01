@@ -1,5 +1,6 @@
 export interface Repository {
-  id: number;
+  repoId: number;
   url: string;
   fullName: string;
+  id: string;
 }

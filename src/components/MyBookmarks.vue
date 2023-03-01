@@ -35,9 +35,10 @@ onMounted(() => {
 }
 
 .bookmarks-list {
+  overflow-x: scroll;
+  width: 100%;
   display: flex;
   flex-direction: row;
-  overflow-x: scroll;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -53,6 +54,8 @@ onMounted(() => {
 
 .bookmark-item {
   margin-right: 8px;
+  min-width: 200px;
+  height: 100px;
 }
 
 .bookmark-item:last-child {

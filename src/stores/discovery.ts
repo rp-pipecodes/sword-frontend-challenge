@@ -23,8 +23,22 @@ export const useDiscoveryStore = defineStore("discovery", () => {
       }/bookmarks.json`
     )
       .then((response) => response.json())
-      .then((data: Repository[] | null) => {
-        bookmarks.value = data || [];
+      .then((data) => {
+        if (data) {
+          const keys = Object.keys(data);
+          const temp: Repository[] = [];
+
+          keys.forEach((key) => {
+            temp.push({
+              ...data[key],
+              id: key,
+            });
+          });
+
+          bookmarks.value = temp;
+        } else {
+          bookmarks.value = [];
+        }
       });
   }
 
@@ -117,7 +131,7 @@ export const useDiscoveryStore = defineStore("discovery", () => {
           const repositories: Repository[] =
             data?.items?.map((item: any) => {
               return {
-                id: item.id,
+                repoId: item.id,
                 url: item.html_url,
                 fullName: item.full_name,
               };
@@ -129,11 +143,38 @@ export const useDiscoveryStore = defineStore("discovery", () => {
   }
 
   async function removeBookmark(repository: Repository) {
-    // TODO: remove bookmark from the database and update the state
+    const user = authStore.user;
+
+    fetch(
+      `${import.meta.env.VITE_FIREBASE_DATABASE_URL}/${user?.uid}/bookmarks/${
+        repository.id
+      }.json`,
+      {
+        method: "DELETE",
+      }
+    )
+      .then((response) => response.json())
+      .then(() => {
+        getBookmarks();
+      });
   }
 
   async function addBookmark(repository: Repository) {
-    // TODO: add bookmark to the database and update the state
+    const user = authStore.user;
+
+    fetch(
+      `${import.meta.env.VITE_FIREBASE_DATABASE_URL}/${
+        user?.uid
+      }/bookmarks.json`,
+      {
+        method: "POST",
+        body: JSON.stringify(repository),
+      }
+    )
+      .then((response) => response.json())
+      .then(() => {
+        getBookmarks();
+      });
   }
 
   return {

@@ -26,7 +26,7 @@ function handleUpdateTopicSort(sort: string) {
   <nav uk-dropnav="mode: click">
     <ul class="uk-subnav">
       <li>
-        <h1 class="uk-heading-small">
+        <h1 class="uk-heading-small title">
           Top {{ topic.displayName }} <span uk-drop-parent-icon></span>
         </h1>
         <div class="uk-dropdown">
@@ -36,9 +36,11 @@ function handleUpdateTopicSort(sort: string) {
               :class="topic.sort === sortOption.key ? 'uk-active' : ''"
               :key="sortOption.key"
             >
-              <span @click="() => handleUpdateTopicSort(sortOption.key)">{{
-                sortOption.displayName
-              }}</span>
+              <span
+                @click="() => handleUpdateTopicSort(sortOption.key)"
+                class="sort-item"
+                >{{ sortOption.displayName }}</span
+              >
             </li>
           </ul>
         </div>
@@ -47,4 +49,22 @@ function handleUpdateTopicSort(sort: string) {
   </nav>
 </template>
 
-<style scoped></style>
+<style scoped>
+.title {
+  color: #333;
+  font-size: 2.6rem;
+  text-transform: none;
+  cursor: pointer;
+  margin-bottom: 0;
+}
+
+.sort-item {
+  cursor: pointer;
+}
+
+@media (min-width: 960px) {
+  .title {
+    font-size: 3.25rem;
+  }
+}
+</style>
