@@ -1,0 +1,61 @@
+{
+  "auth": {
+    "validations": {
+      "email_empty": "Email can not be empty",
+      "email_not_valid": "Email is not valid",
+      "password_empty": "Password can not be empty",
+      "passwords_dont_match": "Passwords don't match",
+      "username_empty": "Username can not be empty"
+    },
+    "errors": {
+      "login_failed": "Login failed",
+      "signup_failed": "Signup failed"
+    },
+    "success": {
+      "profile_updated": "Profile updated successfully"
+    },
+    "email": "Email",
+    "password": "Password",
+    "confirm_password": "Confirm Password",
+    "sign_in": "Sign In",
+    "sign_up": "Sign Up",
+    "no_account": "Don't have an account?",
+    "click_to_signup": "Click here to signup",
+    "have_account": "Already have an account?",
+    "click_to_login": "Click here to Log In",
+    "username": "Username",
+    "logout": "Logout"
+  },
+  "my_account": {
+    "title": "My Account",
+    "submit": "Save"
+  },
+  "discovery": {
+    "title": "Discovery",
+    "errors": {
+      "fetch_repos": "Can not fetch repositories from Github"
+    }
+  },
+  "bookmarks": {
+    "title": "My Bookmarks",
+    "errors": {
+      "fetch_bookmarks": "Can not fetch bookmarks",
+      "remove_bookmark": "Can not remove the bookmark",
+      "add_bookmark": "Can not add the bookmark"
+    }
+  },
+  "topics": {
+    "title": "Toggle topics to show",
+    "top_title": "Top {topic_name}",
+    "errors": {
+      "fetch_topics": "Can not fetch topics",
+      "update_topic": "Can not update topic"
+    }
+  },
+  "sort_options": {
+    "stars": "Sort by stars",
+    "forks": "Sort by forks",
+    "help_wanted_issues": "Sort by help wanted issues",
+    "updated": "Sort by updated"
+  }
+}

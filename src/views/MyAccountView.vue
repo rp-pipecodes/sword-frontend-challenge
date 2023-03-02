@@ -4,6 +4,7 @@ import InputField from "@/components/InputField.vue";
 import { useAuthStore } from "@/stores/auth";
 import { ref, type Ref } from "vue";
 import { EMAIL_REGEX } from "@/constants/validations";
+import $i18n from "@/i18n";
 
 const authStore = useAuthStore();
 
@@ -14,17 +15,17 @@ const successMessage: Ref<string | null | undefined> = ref(null);
 
 function isFormValid() {
   if (email.value.length === 0) {
-    errorMessage.value = "Email can not be empty";
+    errorMessage.value = $i18n.global.t("auth.validations.email_empty");
     return false;
   }
 
   if (!email.value.match(EMAIL_REGEX)) {
-    errorMessage.value = "Email is not valid";
+    errorMessage.value = $i18n.global.t("auth.validations.email_not_valid");
     return false;
   }
 
   if (username.value.length === 0) {
-    errorMessage.value = "Username can not be empty";
+    errorMessage.value = $i18n.global.t("auth.validations.username_empty");
     return false;
   }
 
@@ -52,7 +53,7 @@ function handleUpdate() {
 <template>
   <main>
     <div class="my-account">
-      <h1 class="uk-heading-small">My Account</h1>
+      <h1 class="uk-heading-small">{{ $t("my_account.title") }}</h1>
 
       <label v-show="errorMessage" class="uk-label-danger">{{
         errorMessage
@@ -65,22 +66,22 @@ function handleUpdate() {
       <InputField
         type="test"
         name="username"
-        placeholder="Username"
-        label-text="Username*"
+        :placeholder="$i18n.global.t('auth.username')"
+        :label-text="$i18n.global.t('auth.username') + '*'"
         v-model="username"
       />
 
       <InputField
         type="email"
         name="email"
-        placeholder="Email"
-        label-text="Email*"
+        :placeholder="$i18n.global.t('auth.email')"
+        :label-text="$i18n.global.t('auth.email') + '*'"
         classes="uk-margin-small-top"
         v-model="email"
       />
 
       <PrimaryButton
-        text="Save"
+        :text="$i18n.global.t('my_account.submit')"
         class="uk-width-1-1 uk-margin-medium-top"
         @click="handleUpdate"
       />

@@ -33,7 +33,8 @@ function handleUpdateTopicSort(sort: string) {
     <ul class="uk-subnav">
       <li>
         <h1 class="uk-heading-small title">
-          Top {{ topic.displayName }} <span uk-drop-parent-icon></span>
+          {{ $t("topics.top_title", { topic_name: topic.displayName }) }}
+          <span uk-drop-parent-icon></span>
         </h1>
         <div class="uk-dropdown">
           <ul class="uk-nav uk-dropdown-nav">

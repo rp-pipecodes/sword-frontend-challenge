@@ -5,6 +5,7 @@ import { useAuthStore } from "@/stores/auth";
 import router from "@/router";
 import { ref, type Ref } from "vue";
 import { EMAIL_REGEX } from "@/constants/validations";
+import $i18n from "@/i18n";
 
 const authStore = useAuthStore();
 
@@ -15,22 +16,24 @@ const errorMessage: Ref<string | null> = ref(null);
 
 function isFormValid() {
   if (email.value.length === 0) {
-    errorMessage.value = "Email can not be empty";
+    errorMessage.value = $i18n.global.t("auth.validations.email_empty");
     return false;
   }
 
   if (!email.value.match(EMAIL_REGEX)) {
-    errorMessage.value = "Email is not valid";
+    errorMessage.value = $i18n.global.t("auth.validations.email_not_valid");
     return false;
   }
 
   if (password.value.length === 0) {
-    errorMessage.value = "Password can not be empty";
+    errorMessage.value = $i18n.global.t("auth.validations.password_empty");
     return false;
   }
 
   if (password.value !== confirmPassword.value) {
-    errorMessage.value = "Passwords don't match";
+    errorMessage.value = $i18n.global.t(
+      "auth.validations.passwords_dont_match"
+    );
     return false;
   }
 
@@ -67,8 +70,8 @@ function handleSignUp() {
       <InputField
         type="email"
         name="email"
-        placeholder="Email"
-        label-text="Email"
+        :placeholder="$i18n.global.t('auth.email')"
+        :label-text="$i18n.global.t('auth.email')"
         v-model="email"
       />
 
@@ -76,7 +79,7 @@ function handleSignUp() {
         type="password"
         name="password"
         placeholder="******"
-        label-text="Password"
+        :label-text="$i18n.global.t('auth.password')"
         classes="uk-margin-small-top"
         v-model="password"
       />
@@ -91,16 +94,16 @@ function handleSignUp() {
       />
 
       <PrimaryButton
-        text="Sign Up"
+        :text="$i18n.global.t('auth.sign_up')"
         class="uk-width-1-1 uk-margin-medium-top"
         @click="handleSignUp"
       />
 
       <div class="uk-margin-small-top">
-        Already have an account?
-        <RouterLink to="/login" class="uk-link"
-          >Click here to Log In</RouterLink
-        >
+        {{ $t("auth.have_account") }}
+        <RouterLink to="/login" class="uk-link">{{
+          $t("auth.click_to_login")
+        }}</RouterLink>
       </div>
     </div>
   </main>

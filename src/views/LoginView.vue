@@ -5,6 +5,7 @@ import { useAuthStore } from "@/stores/auth";
 import router from "@/router";
 import { ref, type Ref } from "vue";
 import { EMAIL_REGEX } from "@/constants/validations";
+import $i18n from "@/i18n";
 
 const authStore = useAuthStore();
 
@@ -14,17 +15,17 @@ const errorMessage: Ref<string | null> = ref(null);
 
 function isFormValid() {
   if (email.value.length === 0) {
-    errorMessage.value = "Email can not be empty";
+    errorMessage.value = $i18n.global.t("auth.validations.email_empty");
     return false;
   }
 
   if (!email.value.match(EMAIL_REGEX)) {
-    errorMessage.value = "Email is not valid";
+    errorMessage.value = $i18n.global.t("auth.validations.email_not_valid");
     return false;
   }
 
   if (password.value.length === 0) {
-    errorMessage.value = "Password can not be empty";
+    errorMessage.value = $i18n.global.t("auth.validations.password_empty");
     return false;
   }
 
@@ -61,8 +62,8 @@ function handleLogin() {
       <InputField
         type="email"
         name="email"
-        placeholder="Email"
-        label-text="Email"
+        :placeholder="$i18n.global.t('auth.email')"
+        :label-text="$i18n.global.t('auth.email')"
         v-model="email"
       />
 
@@ -70,22 +71,22 @@ function handleLogin() {
         type="password"
         name="password"
         placeholder="******"
-        label-text="Password"
+        :label-text="$i18n.global.t('auth.password')"
         classes="uk-margin-small-top"
         v-model="password"
       />
 
       <PrimaryButton
-        text="Sign In"
+        :text="$i18n.global.t('auth.sign_in')"
         class="uk-width-1-1 uk-margin-medium-top"
         @click="handleLogin"
       />
 
       <div class="uk-margin-small-top">
-        Don't have an account?
-        <RouterLink to="/signup" class="uk-link"
-          >Click here to signup</RouterLink
-        >
+        {{ $t("auth.no_account") }}
+        <RouterLink to="/signup" class="uk-link">{{
+          $t("auth.click_to_signup")
+        }}</RouterLink>
       </div>
     </div>
   </main>

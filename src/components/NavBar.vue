@@ -34,7 +34,7 @@ function handleLogout() {
 
             <ul class="uk-navbar-nav">
               <li :class="currentRouteName === 'discovery' ? 'uk-active' : ''">
-                <RouterLink to="/">Discovery</RouterLink>
+                <RouterLink to="/">{{ $t("discovery.title") }}</RouterLink>
               </li>
             </ul>
           </div>
@@ -46,7 +46,9 @@ function handleLogout() {
                   authStore.user?.displayName || authStore.user?.email
                 }}</RouterLink>
               </li>
-              <li><a @click="handleLogout">Logout</a></li>
+              <li>
+                <a @click="handleLogout">{{ $t("auth.logout") }}</a>
+              </li>
             </ul>
           </div>
         </div>

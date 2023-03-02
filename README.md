@@ -52,3 +52,9 @@ npm run test:unit
 ```sh
 npm run lint
 ```
+
+## Future Work
+
+- [] Cypress e2e tests
+- [] Show loading progress for async processes
+- [] Better hover effect

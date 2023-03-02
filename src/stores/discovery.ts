@@ -1,3 +1,4 @@
+import $i18n from "@/i18n";
 import { useAuthStore } from "./auth";
 import { ref, type Ref } from "vue";
 import { defineStore } from "pinia";
@@ -45,7 +46,9 @@ export const useDiscoveryStore = defineStore("discovery", () => {
 
         return Promise.resolve(bookmarks.value);
       } else {
-        return Promise.reject("Can not fetch bookmarks");
+        return Promise.reject(
+          $i18n.global.t("bookmarks.errors.fetch_bookmarks")
+        );
       }
     } catch (error) {
       return Promise.reject(error);
@@ -82,7 +85,7 @@ export const useDiscoveryStore = defineStore("discovery", () => {
 
         return Promise.resolve(topics.value);
       } else {
-        return Promise.reject("Can not fetch topics");
+        return Promise.reject($i18n.global.t("topics.errors.fetch_topics"));
       }
     } catch (error) {
       return Promise.reject(error);
@@ -156,7 +159,7 @@ export const useDiscoveryStore = defineStore("discovery", () => {
 
         return Promise.resolve(topics.value);
       } else {
-        return Promise.reject("Can not update topic");
+        return Promise.reject($i18n.global.t("topics.errors.update_topic"));
       }
     } catch (error) {
       return Promise.reject(error);
@@ -177,7 +180,7 @@ export const useDiscoveryStore = defineStore("discovery", () => {
             return response.json();
           }
 
-          return reject("Can not fetch repositories from Github");
+          return reject($i18n.global.t("discovery.errors.fetch_repos"));
         })
         .then((data) => {
           const repositories: Repository[] =
@@ -212,7 +215,9 @@ export const useDiscoveryStore = defineStore("discovery", () => {
 
         return Promise.resolve();
       } else {
-        return Promise.reject("Can not remove the bookmark");
+        return Promise.reject(
+          $i18n.global.t("bookmarks.errors.remove_bookmark")
+        );
       }
     } catch (error) {
       return Promise.reject(error);
@@ -238,7 +243,7 @@ export const useDiscoveryStore = defineStore("discovery", () => {
 
         return Promise.resolve();
       } else {
-        return Promise.reject("Can not add the bookmark");
+        return Promise.reject($i18n.global.t("bookmarks.errors.add_bookmark"));
       }
     } catch (error) {
       return Promise.reject(error);

@@ -9,6 +9,7 @@ import {
   updateEmail,
   updateProfile,
 } from "firebase/auth";
+import $i18n from "@/i18n";
 
 export const useAuthStore = defineStore(
   "auth",
@@ -25,9 +26,9 @@ export const useAuthStore = defineStore(
         if (response) {
           user.value = response.user;
 
-          return Promise.resolve("success");
+          return Promise.resolve();
         } else {
-          return Promise.reject("login failed");
+          return Promise.reject($i18n.global.t("auth.errors.login_failed"));
         }
       } catch (error) {
         return Promise.reject(error);
@@ -45,9 +46,9 @@ export const useAuthStore = defineStore(
         if (response) {
           user.value = response.user;
 
-          return Promise.resolve("success");
+          return Promise.resolve();
         } else {
-          return Promise.reject("login failed");
+          return Promise.reject($i18n.global.t("auth.errors.signup_failed"));
         }
       } catch (error) {
         return Promise.reject(error);
@@ -87,7 +88,7 @@ export const useAuthStore = defineStore(
 
       user.value = newUser;
 
-      return Promise.resolve("Profile updated successfully");
+      return Promise.resolve($i18n.global.t("auth.success.profile_updated"));
     }
 
     return { user, logIn, signUp, logout, updateUser };

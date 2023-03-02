@@ -1,5 +1,6 @@
 import type { Topic } from "@/models/topic";
 import type { SortOption } from "@/models/sortOption";
+import $i18n from "@/i18n";
 
 export const TOPICS_DEFAULT: Topic[] = [
   {
@@ -43,18 +44,18 @@ export const TOPICS_DEFAULT: Topic[] = [
 export const SORT_OPTIONS: SortOption[] = [
   {
     key: "starts",
-    displayName: "Sort by stars",
+    displayName: $i18n.global.t("sort_options.stars"),
   },
   {
     key: "forks",
-    displayName: "Sort by forks",
+    displayName: $i18n.global.t("sort_options.forks"),
   },
   {
     key: "help-wanted-issues",
-    displayName: "Sort by help wanted issues",
+    displayName: $i18n.global.t("sort_options.help_wanted_issues"),
   },
   {
     key: "updated",
-    displayName: "Sort by updated",
+    displayName: $i18n.global.t("sort_options.updated"),
   },
 ];

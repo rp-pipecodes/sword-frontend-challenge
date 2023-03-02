@@ -10,7 +10,7 @@ const topics = computed(() => discoveryStore.topics);
 
 <template>
   <div v-show="topics.length > 0" class="topics">
-    <label class="topics-title">Toggle topics to show</label>
+    <label class="topics-title">{{ $t("topics.title") }}</label>
 
     <div class="topics-list uk-margin-small-top">
       <TopicButton
