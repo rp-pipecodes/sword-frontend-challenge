@@ -56,7 +56,11 @@ export const useAuthStore = defineStore(
     }
 
     async function logout() {
-      await signOut(auth);
+      try {
+        await signOut(auth);
+      } catch (error) {
+        return Promise.reject($i18n.global.t("auth.errors.logout_failed"));
+      }
 
       user.value = null;
 

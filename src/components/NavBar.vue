@@ -1,21 +1,30 @@
 <script setup lang="ts">
+import { TOAST_OPTIONS } from "@/constants/toasts";
+import $i18n from "@/i18n";
 import router from "@/router";
 import { useAuthStore } from "@/stores/auth";
 import { computed } from "vue";
 import { useRoute } from "vue-router";
+import { useToast } from "vue-toast-notification";
 
 const authStore = useAuthStore();
 const route = useRoute();
+const $toast = useToast();
 
 const currentRouteName = computed(() => route.name);
 
 function handleLogout() {
-  const confirm = window.confirm("Are you sure?");
+  const confirm = window.confirm($i18n.global.t("auth.logout_confirmation"));
 
   if (confirm) {
-    authStore.logout().then(() => {
-      router.replace({ name: "login" });
-    });
+    authStore
+      .logout()
+      .then(() => {
+        router.replace({ name: "login" });
+      })
+      .catch((error) => {
+        $toast.error(error, TOAST_OPTIONS);
+      });
   }
 }
 </script>

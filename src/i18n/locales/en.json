@@ -9,7 +9,8 @@
     },
     "errors": {
       "login_failed": "Login failed",
-      "signup_failed": "Signup failed"
+      "signup_failed": "Signup failed",
+      "logout_failed": "An error occurred. Can not logout."
     },
     "success": {
       "profile_updated": "Profile updated successfully"
@@ -24,7 +25,8 @@
     "have_account": "Already have an account?",
     "click_to_login": "Click here to Log In",
     "username": "Username",
-    "logout": "Logout"
+    "logout": "Logout",
+    "logout_confirmation": "Are you sure?"
   },
   "my_account": {
     "title": "My Account",
