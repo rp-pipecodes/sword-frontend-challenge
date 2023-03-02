@@ -52,8 +52,8 @@ function handleLogin() {
 
 <template>
   <main class="center">
-    <div class="auth">
-      <h1 class="uk-heading-small">Sign In</h1>
+    <form class="auth" @submit.prevent="handleLogin">
+      <h1 class="uk-heading-small">{{ $t("auth.sign_in") }}</h1>
 
       <label v-show="errorMessage" class="uk-label-danger">{{
         errorMessage
@@ -79,7 +79,7 @@ function handleLogin() {
       <PrimaryButton
         :text="$i18n.global.t('auth.sign_in')"
         class="uk-width-1-1 uk-margin-medium-top"
-        @click="handleLogin"
+        type="submit"
       />
 
       <div class="uk-margin-small-top">
@@ -88,6 +88,6 @@ function handleLogin() {
           $t("auth.click_to_signup")
         }}</RouterLink>
       </div>
-    </div>
+    </form>
   </main>
 </template>
