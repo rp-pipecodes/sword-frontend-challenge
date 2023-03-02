@@ -58,6 +58,13 @@ function handleToggleBookmark() {
 <style scoped>
 .repository-card {
   cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.repository-card:hover {
+  transform: scale(1.2);
+  z-index: 99;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
 
 .repository-card:after {
@@ -67,7 +74,7 @@ function handleToggleBookmark() {
   height: 100%;
   top: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.1);
   opacity: 0;
   transition: all 0.2s;
   -webkit-transition: all 0.2s;

@@ -36,10 +36,13 @@ const topic = computed(() => props.topic);
 }
 
 .repositories-list {
-  overflow-x: scroll;
   width: 100%;
-  display: flex;
   flex-direction: row;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 30px;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -54,6 +57,7 @@ const topic = computed(() => props.topic);
 }
 
 .repository-item {
+  flex: 0 0 auto;
   margin-right: 8px;
   min-width: 260px;
   height: 130px;
