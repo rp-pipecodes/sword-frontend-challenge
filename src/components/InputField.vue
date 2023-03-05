@@ -1,9 +1,9 @@
 <script setup lang="ts">
 defineProps<{
   labelText?: string;
-  type: string;
+  type?: string;
   placeholder?: string;
-  name: string;
+  name?: string;
   classes?: string;
   modelValue?: string;
 }>();
