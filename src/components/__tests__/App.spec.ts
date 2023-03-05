@@ -4,10 +4,10 @@ import App from "@/App.vue";
 import { createTestingPinia } from "@pinia/testing";
 import router from "@/router";
 import i18n from "@/i18n";
-import USER_MOCK from "./mocks/user.mock.json";
+import AUTH_MOCK from "./mocks/auth.mock.json";
 
 describe("App.vue Test", () => {
-  it("not renders the NavBar component without any user logged in", () => {
+  it("not renders the App component without any user logged in", () => {
     const wrapper = mount(App, {
       global: {
         plugins: [
@@ -28,7 +28,7 @@ describe("App.vue Test", () => {
     expect(wrapper.findComponent({ name: "NavBar" }).exists()).toBeFalsy();
   });
 
-  it("renders the NavBar component with a user logged in", () => {
+  it("renders the App component with a user logged in", () => {
     const wrapper = mount(App, {
       global: {
         plugins: [
@@ -36,7 +36,7 @@ describe("App.vue Test", () => {
             createSpy: vi.fn,
             initialState: {
               auth: {
-                user: USER_MOCK,
+                user: AUTH_MOCK.user,
               },
             },
           }),
