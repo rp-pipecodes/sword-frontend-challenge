@@ -55,7 +55,7 @@ function handleLogin() {
     <form class="auth" @submit.prevent="handleLogin">
       <h1 class="uk-heading-small">{{ $t("auth.sign_in") }}</h1>
 
-      <label v-show="errorMessage" class="uk-label-danger">{{
+      <label v-if="errorMessage" class="uk-label-danger">{{
         errorMessage
       }}</label>
 

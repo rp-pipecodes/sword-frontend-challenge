@@ -1,0 +1,28 @@
+{
+  "user": {
+    "uid": "rms7bn7oBObsPJ8TzlWFrYzfkLG2",
+    "email": "john.doe@pipecodes.com",
+    "emailVerified": false,
+    "displayName": "rafael",
+    "isAnonymous": false,
+    "providerData": [
+      {
+        "providerId": "password",
+        "uid": "john.doe@pipecodes.com",
+        "displayName": "rafael",
+        "email": "john.doe@pipecodes.com",
+        "phoneNumber": null,
+        "photoURL": null
+      }
+    ],
+    "stsTokenManager": {
+      "refreshToken": "APFWN8fM4X90B8mdDCj7KaSZOoNVkzqU3soKTLGt0xJXWRIDKBhdSV7Lp0rVDeV1iAFxsExu2LLHYPh7i06eJbVZwEnDO3frNcu3lwUReIrLBVoUCIuM-L996pffz_l3nqv28ciAMyqzgEPz3hkRSn4cqO4rqttve8D2XtlRXcDOfXItmp0LZUHjMQ6Pyheyg2PwykzZyxYbZASdifl2im8CUe8e4O-TFtgtBysKTJZwZ-rq5RwNDNo",
+      "accessToken": "eyJhgGciOiJSUzI1NiIsImtpZCI6ImY4NzZiNzIxNDAwYmZhZmEyOWQ0MTFmZTYwODE2YmRhZWMyM2IzODIiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoicmFmYTIiLCJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vc3dvcmQtZmUtY2hhbGxlbmdlIiwiYXVkIjoic3dvcmQtZmUtY2hhbGxlbmdlIiwiYXV0aF90aW1lIjoxNjc4MDI5MTE2LCJ1c2VyX2lkIjoicm1zN2JuN29CT2JzUEo2VHpsV0ZyWXpma0xHMiIsInN1YiI6InJtczdibjdvQk9ic1BKNlR6bFdGcll6ZmtMRzIiLCJpYXQiOjE2NzgwMjkxMTYsImV4cCI6MTY3ODAzMjcxNiwiZW1haWwiOiJyYWZhZWwucGFzc29zQHBpcGVjb2Rlcy5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsicmFmYWVsLnBhc3Nvc0BwaXBlY29kZXMuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.pvct6pfJj6OUmQna3y5bXAqcdp1U9rWPU1s5QCldRNxlSqbgR7oeu37U-uZIoScAo0DetGohkelQ3X2_KZ3Qp6O7cJdOJimo4G47OB0HdLNYEWuMW_RIPjf4FuzLVMaZqAShGvy9e2w_CYVNyxCPyYRETWwPn52nrK9xjLU7rXb3r1SP7TYdc7cJ3ObpUfgLD4phFl0ofdcHWtNRLpb63O2lMuqSBkkMRBG1D2SBomAA5Q0R9jKY9cqDYe1pTLa0OEH3TvHjcwiVoSXBVXlq1KDHzV0jOBMUYQC0d0okm1E9W5x7AhKrrvyeti2A7YOSRvefrxkLij3WEl0p8Ncc4Q",
+      "expirationTime": 1678032716392
+    },
+    "createdAt": "1677363072070",
+    "lastLoginAt": "1678029116404",
+    "apiKey": "TestAPIKEY",
+    "appName": "[DEFAULT]"
+  }
+}

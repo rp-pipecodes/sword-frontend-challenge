@@ -7,11 +7,9 @@ const authStore = useAuthStore();
 </script>
 
 <template>
-  <header v-show="authStore.user">
+  <header v-if="authStore.user">
     <NavBar />
   </header>
 
   <RouterView />
 </template>
-
-<style scoped></style>

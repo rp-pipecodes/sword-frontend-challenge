@@ -9,7 +9,7 @@ const topics = computed(() => discoveryStore.topics);
 </script>
 
 <template>
-  <div v-show="topics.length > 0" class="topics">
+  <div v-if="topics.length > 0" class="topics">
     <label class="topics-title">{{ $t("topics.title") }}</label>
 
     <div class="topics-list uk-margin-small-top">

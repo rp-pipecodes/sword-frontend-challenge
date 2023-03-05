@@ -63,7 +63,7 @@ function handleSignUp() {
     <form class="auth" @submit.prevent="handleSignUp">
       <h1 class="uk-heading-small">{{ $t("auth.sign_up") }}</h1>
 
-      <label v-show="errorMessage" class="uk-label-danger">{{
+      <label v-if="errorMessage" class="uk-label-danger">{{
         errorMessage
       }}</label>
 

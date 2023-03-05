@@ -13,7 +13,7 @@ const topic = computed(() => props.topic);
 
 <template>
   <div
-    v-show="topic.repositories && topic.repositories?.length > 0"
+    v-if="topic.repositories && topic.repositories?.length > 0"
     class="repository-listing"
   >
     <TopicTitle :topic="topic" />

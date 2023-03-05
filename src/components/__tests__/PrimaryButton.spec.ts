@@ -2,7 +2,7 @@ import { describe, it, expect } from "vitest";
 import { shallowMount } from "@vue/test-utils";
 import PrimaryButton from "../PrimaryButton.vue";
 
-describe("InputField.vue Test", () => {
+describe("PrimaryButton.vue Test", () => {
   it("renders the component correctly", () => {
     const wrapper = shallowMount(PrimaryButton, {
       propsData: {

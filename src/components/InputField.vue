@@ -12,7 +12,7 @@ defineEmits(["update:modelValue"]);
 
 <template>
   <div :class="classes">
-    <label :for="name" v-show="labelText">{{ labelText }}</label>
+    <label :for="name" v-if="labelText">{{ labelText }}</label>
     <input
       class="uk-input uk-margin-small-top"
       :type="type || 'text'"

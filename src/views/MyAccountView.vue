@@ -55,11 +55,11 @@ function handleUpdate() {
     <div class="my-account">
       <h1 class="uk-heading-small">{{ $t("my_account.title") }}</h1>
 
-      <label v-show="errorMessage" class="uk-label-danger">{{
+      <label v-if="errorMessage" class="uk-label-danger">{{
         errorMessage
       }}</label>
 
-      <label v-show="successMessage" class="uk-label-success">{{
+      <label v-if="successMessage" class="uk-label-success">{{
         successMessage
       }}</label>
 

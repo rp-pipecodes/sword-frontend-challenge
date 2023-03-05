@@ -19,7 +19,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div v-show="bookmarks.length > 0" class="my-bookmarks">
+  <div v-if="bookmarks.length > 0" class="my-bookmarks">
     <h1 class="uk-heading-small">{{ $t("bookmarks.title") }}</h1>
 
     <div class="bookmarks-list uk-margin-small-top">
