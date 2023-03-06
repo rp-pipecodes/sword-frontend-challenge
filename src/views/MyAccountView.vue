@@ -64,7 +64,7 @@ function handleUpdate() {
       }}</label>
 
       <InputField
-        type="test"
+        type="text"
         name="username"
         :placeholder="$i18n.global.t('auth.username')"
         :label-text="$i18n.global.t('auth.username') + '*'"
@@ -81,6 +81,7 @@ function handleUpdate() {
       />
 
       <PrimaryButton
+        type="button"
         :text="$i18n.global.t('my_account.submit')"
         class="uk-width-1-1 uk-margin-medium-top"
         @click="handleUpdate"
