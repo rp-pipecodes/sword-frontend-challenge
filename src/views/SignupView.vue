@@ -88,7 +88,7 @@ function handleSignUp() {
         type="password"
         name="confirm-password"
         placeholder="******"
-        label-text="Confirm Password"
+        :label-text="$i18n.global.t('auth.confirm_password')"
         classes="uk-margin-small-top"
         v-model="confirmPassword"
       />
