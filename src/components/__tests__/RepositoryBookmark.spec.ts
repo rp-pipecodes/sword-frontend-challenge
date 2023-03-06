@@ -4,7 +4,7 @@ import { describe, it, expect, vi } from "vitest";
 import { shallowMount } from "@vue/test-utils";
 import { createTestingPinia } from "@pinia/testing";
 import AUTH_MOCK from "./mocks/auth.mock.json";
-import REPOSITORY_BOOKMARK_MOCK from "./mocks/repositoryBookmark.mock.json";
+import REPOSITORY_BOOKMARK_MOCK from "./mocks/bookmark.mock.json";
 import RepositoryBookmark from "../RepositoryBookmark.vue";
 import { useDiscoveryStore } from "@/stores/discovery";
 

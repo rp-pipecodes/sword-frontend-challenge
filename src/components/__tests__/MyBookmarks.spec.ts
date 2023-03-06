@@ -5,7 +5,7 @@ import { flushPromises, shallowMount } from "@vue/test-utils";
 import { createTestingPinia } from "@pinia/testing";
 import i18n from "@/i18n";
 import AUTH_MOCK from "./mocks/auth.mock.json";
-import BOOKMARKS_MOCK from "./mocks/bookmarks.mock.json";
+import BOOKMARKS_RESPONSE_MOCK from "./mocks/bookmarks-response.mock.json";
 import MyBookmarks from "../MyBookmarks.vue";
 import { useDiscoveryStore } from "@/stores/discovery";
 
@@ -61,7 +61,7 @@ describe("MyBookmarks.vue Test", () => {
           AUTH_MOCK.user.uid
         }/bookmarks.json`,
         (req, res, ctx) => {
-          return res(ctx.status(200), ctx.json(BOOKMARKS_MOCK));
+          return res(ctx.status(200), ctx.json(BOOKMARKS_RESPONSE_MOCK));
         }
       )
     );
