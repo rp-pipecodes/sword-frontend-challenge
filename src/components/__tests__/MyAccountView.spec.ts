@@ -2,7 +2,7 @@ import { rest } from "msw";
 import { server } from "./../../setupTests";
 import router from "@/router";
 import { describe, it, expect, vi } from "vitest";
-import { RouterLinkStub, flushPromises, mount } from "@vue/test-utils";
+import { RouterLinkStub, mount } from "@vue/test-utils";
 import { createTestingPinia } from "@pinia/testing";
 import AUTH_MOCK from "./mocks/auth.mock.json";
 import MyAccountView from "@/views/MyAccountView.vue";
