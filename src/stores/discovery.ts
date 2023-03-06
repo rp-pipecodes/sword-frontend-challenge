@@ -80,7 +80,7 @@ export const useDiscoveryStore = defineStore("discovery", () => {
 
           topics.value = tempTopics;
         } else {
-          topics.value = [];
+          topics.value = TOPICS_DEFAULT;
         }
 
         return Promise.resolve(topics.value);

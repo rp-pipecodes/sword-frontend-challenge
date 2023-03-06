@@ -1,0 +1,194 @@
+[
+  {
+    "displayName": "Vue",
+    "key": "vue",
+    "selected": true,
+    "sort": "stars",
+    "repositories": [
+      {
+        "repoId": 11730342,
+        "url": "https://github.com/vuejs/vue",
+        "fullName": "vuejs/vue"
+      },
+      {
+        "repoId": 14098069,
+        "url": "https://github.com/justjavac/free-programming-books-zh_CN",
+        "fullName": "justjavac/free-programming-books-zh_CN"
+      },
+      {
+        "repoId": 88464704,
+        "url": "https://github.com/PanJiaChen/vue-element-admin",
+        "fullName": "PanJiaChen/vue-element-admin"
+      },
+      {
+        "repoId": 54173593,
+        "url": "https://github.com/storybookjs/storybook",
+        "fullName": "storybookjs/storybook"
+      },
+      {
+        "repoId": 44571718,
+        "url": "https://github.com/vuejs/awesome-vue",
+        "fullName": "vuejs/awesome-vue"
+      },
+      {
+        "repoId": 67274736,
+        "url": "https://github.com/ElemeFE/element",
+        "fullName": "ElemeFE/element"
+      },
+      {
+        "repoId": 203587744,
+        "url": "https://github.com/hoppscotch/hoppscotch",
+        "fullName": "hoppscotch/hoppscotch"
+      },
+      {
+        "repoId": 12256376,
+        "url": "https://github.com/ionic-team/ionic-framework",
+        "fullName": "ionic-team/ionic-framework"
+      },
+      {
+        "repoId": 75104123,
+        "url": "https://github.com/prettier/prettier",
+        "fullName": "prettier/prettier"
+      },
+      {
+        "repoId": 71995937,
+        "url": "https://github.com/nuxt/nuxt",
+        "fullName": "nuxt/nuxt"
+      }
+    ]
+  },
+  {
+    "displayName": "Typescript",
+    "key": "typescript",
+    "selected": false,
+    "sort": "stars"
+  },
+  {
+    "displayName": "Javascript",
+    "key": "javascript",
+    "selected": true,
+    "sort": "starts",
+    "repositories": [
+      {
+        "repoId": 6498492,
+        "url": "https://github.com/airbnb/javascript",
+        "fullName": "airbnb/javascript"
+      },
+      {
+        "repoId": 97086543,
+        "url": "https://github.com/TheAlgorithms/JavaScript",
+        "fullName": "TheAlgorithms/JavaScript"
+      },
+      {
+        "repoId": 126577260,
+        "url": "https://github.com/trekhleb/javascript-algorithms",
+        "fullName": "trekhleb/javascript-algorithms"
+      },
+      {
+        "repoId": 18286232,
+        "url": "https://github.com/GitbookIO/javascript",
+        "fullName": "GitbookIO/javascript"
+      },
+      {
+        "repoId": 50885815,
+        "url": "https://github.com/yangxi0126/javaScript",
+        "fullName": "yangxi0126/javaScript"
+      },
+      {
+        "repoId": 75867720,
+        "url": "https://github.com/wesbos/JavaScript30",
+        "fullName": "wesbos/JavaScript30"
+      },
+      {
+        "repoId": 246902076,
+        "url": "https://github.com/gustavoguanabara/javascript",
+        "fullName": "gustavoguanabara/javascript"
+      },
+      {
+        "repoId": 191529732,
+        "url": "https://github.com/lydiahallie/javascript-questions",
+        "fullName": "lydiahallie/javascript-questions"
+      },
+      {
+        "repoId": 89748560,
+        "url": "https://github.com/kubernetes-client/javascript",
+        "fullName": "kubernetes-client/javascript"
+      },
+      {
+        "repoId": 74791366,
+        "url": "https://github.com/ryanmcdermott/clean-code-javascript",
+        "fullName": "ryanmcdermott/clean-code-javascript"
+      }
+    ]
+  },
+  {
+    "displayName": "Go",
+    "key": "go",
+    "selected": true,
+    "sort": "stars",
+    "repositories": [
+      {
+        "repoId": 11730342,
+        "url": "https://github.com/vuejs/vue",
+        "fullName": "vuejs/vue"
+      },
+      {
+        "repoId": 23096959,
+        "url": "https://github.com/golang/go",
+        "fullName": "golang/go"
+      },
+      {
+        "repoId": 21540759,
+        "url": "https://github.com/avelino/awesome-go",
+        "fullName": "avelino/awesome-go"
+      },
+      {
+        "repoId": 20580498,
+        "url": "https://github.com/kubernetes/kubernetes",
+        "fullName": "kubernetes/kubernetes"
+      },
+      {
+        "repoId": 20904437,
+        "url": "https://github.com/gin-gonic/gin",
+        "fullName": "gin-gonic/gin"
+      },
+      {
+        "repoId": 11180687,
+        "url": "https://github.com/gohugoio/hugo",
+        "fullName": "gohugoio/hugo"
+      },
+      {
+        "repoId": 7691631,
+        "url": "https://github.com/moby/moby",
+        "fullName": "moby/moby"
+      },
+      {
+        "repoId": 48378947,
+        "url": "https://github.com/fatedier/frp",
+        "fullName": "fatedier/frp"
+      },
+      {
+        "repoId": 15634981,
+        "url": "https://github.com/godotengine/godot",
+        "fullName": "godotengine/godot"
+      },
+      {
+        "repoId": 15111821,
+        "url": "https://github.com/grafana/grafana",
+        "fullName": "grafana/grafana"
+      }
+    ]
+  },
+  {
+    "displayName": "CSS",
+    "key": "css",
+    "selected": false,
+    "sort": "stars"
+  },
+  {
+    "displayName": "Node",
+    "key": "node",
+    "selected": false,
+    "sort": "stars"
+  }
+]

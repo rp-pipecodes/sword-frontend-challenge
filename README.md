@@ -55,8 +55,8 @@ npm run lint
 
 ## Future Work
 
-- [] Unit testing for components
-- [] Cypress e2e tests
-- [] Show loading progress for async processes
-- [] Better hover effect
-- [] Better error handling
+- [ ] More unit tests
+- [ ] Cypress e2e tests
+- [ ] Show loading progress for async processes
+- [ ] Better hover effect
+- [ ] Better error handling

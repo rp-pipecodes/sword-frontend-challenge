@@ -1,11 +1,33 @@
-import { rest } from "msw";
-import { server } from "./../../setupTests";
 import { describe, it, expect, vi } from "vitest";
-import { flushPromises, shallowMount } from "@vue/test-utils";
+import { shallowMount } from "@vue/test-utils";
 import { createTestingPinia } from "@pinia/testing";
 import i18n from "@/i18n";
-import AUTH_MOCK from "./mocks/auth.mock.json";
+import TOPICS_MOCK from "./mocks/topics.mock.json";
 import ToggleTopics from "../ToggleTopics.vue";
-import { useDiscoveryStore } from "@/stores/discovery";
 
-describe("ToggleTopics.vue Test", () => {});
+describe("ToggleTopics.vue Test", () => {
+  it("renders the component with topics", () => {
+    const wrapper = shallowMount(ToggleTopics, {
+      global: {
+        plugins: [
+          createTestingPinia({
+            createSpy: vi.fn,
+            initialState: {
+              discovery: {
+                topics: TOPICS_MOCK,
+              },
+            },
+          }),
+          i18n,
+        ],
+      },
+    });
+
+    const title = wrapper.find("label");
+    expect(title.exists()).toBeTruthy();
+    expect(title.text()).toBe(i18n.global.t("topics.title"));
+    expect(wrapper.findAllComponents({ name: "TopicButton" }).length).toBe(
+      TOPICS_MOCK.length
+    );
+  });
+});
