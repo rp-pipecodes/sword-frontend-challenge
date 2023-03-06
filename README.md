@@ -59,3 +59,4 @@ npm run lint
 - [] Cypress e2e tests
 - [] Show loading progress for async processes
 - [] Better hover effect
+- [] Better error handling

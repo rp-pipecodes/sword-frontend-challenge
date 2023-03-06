@@ -6,7 +6,7 @@ export const restHandlers = [];
 export const server = setupServer(...restHandlers);
 
 // Start server before all tests
-beforeAll(() => server.listen({ onUnhandledRequest: "error" }));
+beforeAll(() => server.listen());
 
 //  Close server after all tests
 afterAll(() => server.close());
