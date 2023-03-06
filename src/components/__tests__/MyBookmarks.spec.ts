@@ -10,7 +10,7 @@ import MyBookmarks from "../MyBookmarks.vue";
 import { useDiscoveryStore } from "@/stores/discovery";
 
 describe("MyBookmarks.vue Test", () => {
-  it("not render the component if no bookmarks", async () => {
+  it("not renders the component if no bookmarks", async () => {
     server.use(
       // Model any response overrides you need.
       rest.get(

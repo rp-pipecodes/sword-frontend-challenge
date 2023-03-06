@@ -1,0 +1,58 @@
+{
+  "displayName": "Vue",
+  "key": "vue",
+  "selected": true,
+  "sort": "stars",
+  "repositories": [
+    {
+      "repoId": 11730342,
+      "url": "https://github.com/vuejs/vue",
+      "fullName": "vuejs/vue"
+    },
+    {
+      "repoId": 14098069,
+      "url": "https://github.com/justjavac/free-programming-books-zh_CN",
+      "fullName": "justjavac/free-programming-books-zh_CN"
+    },
+    {
+      "repoId": 88464704,
+      "url": "https://github.com/PanJiaChen/vue-element-admin",
+      "fullName": "PanJiaChen/vue-element-admin"
+    },
+    {
+      "repoId": 54173593,
+      "url": "https://github.com/storybookjs/storybook",
+      "fullName": "storybookjs/storybook"
+    },
+    {
+      "repoId": 44571718,
+      "url": "https://github.com/vuejs/awesome-vue",
+      "fullName": "vuejs/awesome-vue"
+    },
+    {
+      "repoId": 67274736,
+      "url": "https://github.com/ElemeFE/element",
+      "fullName": "ElemeFE/element"
+    },
+    {
+      "repoId": 203587744,
+      "url": "https://github.com/hoppscotch/hoppscotch",
+      "fullName": "hoppscotch/hoppscotch"
+    },
+    {
+      "repoId": 12256376,
+      "url": "https://github.com/ionic-team/ionic-framework",
+      "fullName": "ionic-team/ionic-framework"
+    },
+    {
+      "repoId": 75104123,
+      "url": "https://github.com/prettier/prettier",
+      "fullName": "prettier/prettier"
+    },
+    {
+      "repoId": 71995937,
+      "url": "https://github.com/nuxt/nuxt",
+      "fullName": "nuxt/nuxt"
+    }
+  ]
+}
