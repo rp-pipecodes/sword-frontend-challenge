@@ -1,3 +1,5 @@
+/// <reference types="vitest" />
+
 import { fileURLToPath, URL } from "node:url";
 
 import { defineConfig } from "vite";
@@ -16,6 +18,11 @@ export default defineConfig({
       ),
     }),
   ],
+  test: {
+    globals: true,
+    setupFiles: "src/setupTests.ts",
+    includeSource: ["src/**/*.{js,ts,vue}"],
+  },
   resolve: {
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),
