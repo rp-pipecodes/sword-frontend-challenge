@@ -1,17 +1,25 @@
 import { rest } from "msw";
 import { server } from "./../../setupTests";
 import { describe, it, expect, vi } from "vitest";
-import { flushPromises, shallowMount } from "@vue/test-utils";
+import { flushPromises, mount } from "@vue/test-utils";
 import { createTestingPinia } from "@pinia/testing";
 import AUTH_MOCK from "./mocks/auth.mock.json";
 import TOPICS_RESPONSE_MOCK from "./mocks/topics-response.mock.json";
 import { useDiscoveryStore } from "@/stores/discovery";
 import DiscoveryView from "@/views/DiscoveryView.vue";
+import i18n from "@/i18n";
 
 describe("DiscoveryView.vue Test", () => {
   it("renders the component", async () => {
     server.use(
-      // Model any response overrides you need.
+      rest.get(
+        `${import.meta.env.VITE_FIREBASE_DATABASE_URL}/${
+          AUTH_MOCK.user.uid
+        }/bookmarks.json`,
+        (req, res, ctx) => {
+          return res(ctx.status(200), ctx.json([]));
+        }
+      ),
       rest.get(
         `${import.meta.env.VITE_FIREBASE_DATABASE_URL}/${
           AUTH_MOCK.user.uid
@@ -28,7 +36,7 @@ describe("DiscoveryView.vue Test", () => {
       )
     );
 
-    const wrapper = shallowMount(DiscoveryView, {
+    const wrapper = mount(DiscoveryView, {
       global: {
         plugins: [
           createTestingPinia({
@@ -40,6 +48,7 @@ describe("DiscoveryView.vue Test", () => {
               },
             },
           }),
+          i18n,
         ],
       },
     });
