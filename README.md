@@ -55,8 +55,16 @@ npm run lint
 
 ## Future Work
 
+- [ ] Better documentation
+- [ ] Show loading progress for async processes
+- [ ] Use different icons in cards (stars)
+- [ ] Show a feedback to the user when a bookmark has added or removed
+- [ ] Repository list pagination (infinite scroll)
+- [ ] Reuse the card component from top lists in bookmarks list
+- [ ] Improve accessibility
+- [ ] Optimize and reuse validations code
+- [ ] Better error handling
+- [ ] Avoid making requests if the data is on cache while navigating in app
+- [ ] Add a button to refresh the data
 - [ ] More unit tests
 - [ ] Cypress e2e tests
-- [ ] Show loading progress for async processes
-- [ ] Better hover effect
-- [ ] Better error handling
